@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class MemoryMemberRepositoryTest {
-   MemberRepository repository = new MemoryMemberRepository();
+   MemoryMemberRepository repository = new MemoryMemberRepository();
 
    // 한번에 여러 테스트를 실행하면 메모리 DB에 직전 테스트의 결과가 남을 수 있으므로 오류 발생 가능성 있음
    // => 테스트 하나 끝날 때마다 데이터를 초기화 해야함

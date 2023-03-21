@@ -16,15 +16,12 @@ class MemberServiceTest {
     MemberService memberService;
     MemoryMemberRepository memberRepository;
 
-
     // DI
     @BeforeEach
     public void beforeEach(){
         memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }
-
-
 
     @AfterEach
     public void afterEach(){
