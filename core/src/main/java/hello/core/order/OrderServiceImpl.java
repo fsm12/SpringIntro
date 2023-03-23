@@ -30,4 +30,9 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 싱글톤 유지되는지에 대한 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
