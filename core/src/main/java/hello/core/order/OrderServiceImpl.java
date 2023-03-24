@@ -3,7 +3,10 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component // 컴포넌트 스캔
 public class OrderServiceImpl implements OrderService{
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -17,6 +20,8 @@ public class OrderServiceImpl implements OrderService{
     // 관심사 분리 - AppConfig에서 주입
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    @Autowired // 컴포넌트 스캔 - 자동 의존관계 주입 마치 [ac.getBean(MemberRepository.class)]처럼 동작
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
