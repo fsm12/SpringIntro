@@ -3,10 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component // 컴포넌트 스캔
+//@RequiredArgsConstructor // 롬복 라이브러리 - final 붙은 객체들의 생성자를 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -21,12 +23,13 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+//    @RequiredArgsConstructor를 선언하면 아래 코드를 따로 적어주지 않아도 만들어줌
     @Autowired // 컴포넌트 스캔 - 자동 의존관계 주입 마치 [ac.getBean(MemberRepository.class)]처럼 동작
+    // 조회 빈이 2개 이상 => 해결 1. @Autowired 필드 명 매칭 : 아래 discountPolicy를 rateDiscountPolicy로 변경
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
